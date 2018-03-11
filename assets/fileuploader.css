@@ -1,0 +1,43 @@
+.fileuploader-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+input.fileuploader{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -10000;
+}
+.fileuploader-container .file-preview{
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    background: #cccccc url("no-image.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 1px 2px 5px 0px #949494;
+}
+.fileuploader-container .file-preview img{
+    width: 200%;
+}
+
+.fileuploader-container .add-file{
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed #101010;
+    cursor: pointer;
+    padding-top: 60px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.fileuploader-container .add-file:hover{
+    opacity: 0.6;
+}

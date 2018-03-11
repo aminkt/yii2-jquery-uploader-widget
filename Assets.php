@@ -11,17 +11,23 @@ use yii\web\View;
  */
 class Assets extends \yii\web\AssetBundle
 {
-    public $sourcePath = __DIR__ . "/assets";
+    public $sourcePath;
     public $css = [
-        'jquery.fileuploader.min.css'
+        'fileuploader.css'
     ];
 
     public $js = [
-        'jquery.fileuploader.min.js'
+        'fileuploader.js'
     ];
 
     public $jsOptions = ['position'=>View::POS_END];
     public $depends = [
         'yii\web\JqueryAsset'
     ];
+
+    public function init()
+    {
+        parent::init();
+        $this->sourcePath = __DIR__ . "/assets";
+    }
 }
