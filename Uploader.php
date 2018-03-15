@@ -48,6 +48,5 @@ class Uploader extends InputWidget
 let upload = $("#{$this->getId()}").fileUploader($options);
 JS;
         $this->view->registerJs($js, View::POS_READY);
-
     }
 }

@@ -11,7 +11,26 @@
     let fileCount = 0;
     let multiple = false;
     let allFiles = [];
+
+    function _upload() {
+        console.log(settings.ajax.url);
+        let form = new FormData();
+        form.append('files', allFiles);
+        console.log(form);
+        $.ajax({
+            url: settings.ajax.url,
+            method: 'post',
+            data: {
+                file: form
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
     $.fn.fileUploader = function (options) {
+
         if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
             alert('The File APIs are not fully supported in this browser.');
             return;
@@ -19,6 +38,9 @@
         // This is the easiest way to have default options.
         settings = $.extend({
             // These are the defaults.
+            ajax: {
+                url: null
+            },
             imageTemplate: "<div class='file-preview'><img src='{url}' alt='{name}'></div>"
         }, options);
         element = this;
@@ -94,6 +116,14 @@
                 }
             });
         });
+
+        return{
+            upload: _upload
+        }
     };
+
+    $.fn.fileUploader.upload = function () {
+        _upload();
+    }
 
 }(jQuery));
