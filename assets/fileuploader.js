@@ -21,7 +21,7 @@
             url: settings.ajax.url,
             method: 'post',
             data: {
-                file: form
+                file: element
             },
             success: function (data) {
                 console.log(data);
@@ -46,7 +46,7 @@
         element = this;
         if(element.attr('multiple')){
             multiple = true;
-            element.removeAttr('multiple');
+            // element.removeAttr('multiple');
         }else{
             multiple = false;
         }
@@ -72,11 +72,17 @@
                 }
             }
 
+
             console.log(allFiles);
+
+            // Clear old previews
+            container.find('.file-preview').remove();
 
             newFiles.forEach(file => {
                 // Loop through the FileList and render image files as thumbnails.
-                for (let i = 0, f; f = newFiles[i]; i++) {
+                console.log(file);
+                // for (let i = 0, f; f = file[i]; i++) {
+                    let f = file;
                     let reader = new FileReader();
 
                     // Closure to capture the file information.
@@ -95,9 +101,10 @@
                                 fileElement.find('img').css('display', 'none');
                             }
 
-                            if(!multiple){
-                                container.find('.file-preview').remove();
-                            }
+                            // If in multiple mode rleave it and if not remove old preview.
+                            // if(!multiple){
+                            //     container.find('.file-preview').remove();
+                            // }
 
                             addFileBtn.before(fileElement);
 
@@ -113,7 +120,7 @@
 
                     // Read in the image file as a data URL.
                     reader.readAsDataURL(f);
-                }
+                // }
             });
         });
 
